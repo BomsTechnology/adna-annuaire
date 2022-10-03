@@ -5,7 +5,7 @@ import { MapPinIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/vue/24/solid";
 
 <template>
   <div
-    class="shadow-lg lg:w-[600px] w-full lg:h-40 rounded-lg flex items-center lg:flex-row flex-col space-x-4 bg-white border p-3"
+    class="shadow-lg lg:w-[600px] w-full lg:h-40 rounded-lg flex lg:items-center items-start lg:flex-row flex-col space-x-4 bg-white border p-3"
   >
     <div
       class="lg:h-full lg:w-40 w-full h-36 bg-gray-100 flex justify-center items-center"
