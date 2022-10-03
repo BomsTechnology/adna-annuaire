@@ -4,11 +4,15 @@ import Navbar from "./Navbar.vue";
 
 <template>
   <header>
-    <div class="px-16 py-6 flex justify-between items-center border-b">
+    <div class="md:px-16 px-4 py-6 flex justify-between items-center border-b">
       <div>
-        <h1 class="text-3xl uppercase font-bold">Adnafrica</h1>
+        <router-link
+          :to="{ name: 'home' }"
+          class="md:text-3xl text-xl uppercase font-bold"
+          >Adnafrica</router-link
+        >
       </div>
-      <div class="flex items-center justify-center space-x-3 text-sm">
+      <div class="md:flex hidden items-center justify-center space-x-3 text-sm">
         <a href="#" class="px-3 py-1 text-white rounded-lg bg-adna-green"
           >Annuaire</a
         >
@@ -17,7 +21,7 @@ import Navbar from "./Navbar.vue";
       <div>
         <button
           type="button"
-          class="bg-adna-green text-white py-2 px-3 rounded-lg"
+          class="bg-adna-green text-white md:text-[16px] text-xs py-2 px-3 rounded-lg"
         >
           Rejoindre l'annuaire
         </button>

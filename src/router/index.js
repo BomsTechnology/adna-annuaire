@@ -17,6 +17,30 @@ const routes = [
       title: siteName + " - Accueil",
     },
   },
+  {
+    path: "/search",
+    name: "search",
+    components: {
+      default: () => import("@/views/front/Search.vue"),
+      header: Header,
+      footer: Footer,
+    },
+    meta: {
+      title: siteName + " - Search",
+    },
+  },
+  {
+    path: "/category",
+    name: "category",
+    components: {
+      default: () => import("@/views/front/Category.vue"),
+      header: Header,
+      footer: Footer,
+    },
+    meta: {
+      title: siteName + " - Search",
+    },
+  },
 ];
 const router = createRouter({
   history: createWebHistory(),
