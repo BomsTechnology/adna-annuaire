@@ -24,7 +24,7 @@ const props = defineProps({
     </div>
     <div class="lg:w-4/5 w-full px-4">
       <div
-        class="h-28 w-28 mx-auto mb-8 rounded-full bg-[#B9E3DA] overflow-hidden p-4"
+        class="h-28 w-28 mx-auto lg:hidden mb-8 rounded-full bg-[#B9E3DA] overflow-hidden p-4"
       >
         <img :src="schoolImage" class="w-full h-full object-cover" alt="" />
       </div>

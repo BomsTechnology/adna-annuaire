@@ -2,15 +2,41 @@
 import {
   HomeIcon,
   AcademicCapIcon,
-  TruckIcon,
-  BuildingOffice2Icon,
-  BanknotesIcon,
-  LightBulbIcon,
-  BuildingStorefrontIcon,
-  UserGroupIcon,
-  BuildingLibraryIcon,
-  ScaleIcon,
+  // TruckIcon,
+  // BuildingOffice2Icon,
+  // BanknotesIcon,
+  // LightBulbIcon,
+  // BuildingStorefrontIcon,
+  // UserGroupIcon,
+  // BuildingLibraryIcon,
+  // ScaleIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
 } from "@heroicons/vue/24/outline";
+import useCategory from "@/composables/useCategory";
+import { ref, onMounted } from "vue";
+const { categories, getAllCategories, loading, errors } = useCategory();
+const nav = ref(null);
+const isScroll = ref(false);
+document.addEventListener("scroll", async function () {
+  let bodyTopPosition = document.body.getBoundingClientRect().top;
+  if (bodyTopPosition < -150) {
+    isScroll.value = true;
+  } else {
+    isScroll.value = false;
+  }
+});
+
+async function scrollLeft() {
+  nav.value.scrollLeft -= 100;
+}
+async function scrollRight() {
+  nav.value.scrollLeft += 100;
+}
+
+onMounted(async function () {
+  await getAllCategories();
+});
 </script>
 <template>
   <div
@@ -21,92 +47,51 @@ import {
     >
     <a href="#">Annonce</a>
   </div>
-  <nav
-    class="flex justify-center items-center no-scrollbar overflow-x-auto space-x-8 py-6 px-16"
-  >
-    <router-link
-      :to="{ name: 'home' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
+  <div class="relative w-full z-40 border-t">
+    <button
+      type="button"
+      @click="scrollLeft()"
+      class="bg-adna-green rounded-full p-1 text-white absolute bottom-10 z-30 left-2"
     >
-      <HomeIcon class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green" />
-      <span>Accueil</span>
-    </router-link>
-    <router-link
-      :to="{ name: 'category' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
+      <ChevronLeftIcon class="h-3 w-3" />
+    </button>
+    <button
+      type="button"
+      @click="scrollRight()"
+      class="bg-adna-green rounded-full p-1 text-white absolute bottom-10 z-30 right-2"
     >
-      <AcademicCapIcon
-        class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green"
-      />
-      <span>Education</span>
-    </router-link>
-    <router-link
-      :to="{ name: 'category' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
+      <ChevronRightIcon class="h-3 w-3" />
+    </button>
+    <nav
+      ref="nav"
+      :class="[
+        isScroll
+          ? 'flex scroll-smooth fixed  shadow w-full bg-gray-50 top-0 justify-start lg:justify-center items-center no-scrollbar overflow-x-auto space-x-8 py-6 px-8 lg:px-16'
+          : 'flex scroll-smooth bg-white justify-start lg:justify-center items-center no-scrollbar overflow-x-auto space-x-8 py-6 px-8 lg:px-16',
+      ]"
     >
-      <TruckIcon class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green" />
-      <span>Transport</span>
-    </router-link>
-    <router-link
-      :to="{ name: 'category' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
-    >
-      <BuildingOffice2Icon
-        class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green"
-      />
-      <span>Immobilier</span>
-    </router-link>
-    <router-link
-      :to="{ name: 'category' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
-    >
-      <BanknotesIcon
-        class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green"
-      />
-      <span>Finance</span>
-    </router-link>
-    <router-link
-      :to="{ name: 'category' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
-    >
-      <LightBulbIcon
-        class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green"
-      />
-      <span>Energie</span>
-    </router-link>
-    <router-link
-      :to="{ name: 'category' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
-    >
-      <BuildingStorefrontIcon
-        class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green"
-      />
-      <span>Commerce</span>
-    </router-link>
-    <router-link
-      :to="{ name: 'category' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
-    >
-      <UserGroupIcon
-        class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green"
-      />
-      <span>Associations</span>
-    </router-link>
-    <router-link
-      :to="{ name: 'category' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
-    >
-      <BuildingLibraryIcon
-        class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green"
-      />
-      <span>Culture</span>
-    </router-link>
-    <router-link
-      :to="{ name: 'category' }"
-      class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
-    >
-      <ScaleIcon class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green" />
-      <span>Justice</span>
-    </router-link>
-  </nav>
+      <router-link
+        :to="{ name: 'home' }"
+        class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
+      >
+        <HomeIcon class="md:h-6 h-4 md:w-6 w-4 group-hover:text-adna-green" />
+        <span>Accueil</span>
+      </router-link>
+      <router-link
+        :to="{
+          name: 'category',
+          params: {
+            slug: category.slug,
+          },
+        }"
+        v-for="category in categories"
+        :key="category.id"
+        class="text-xs lg:text-sm group hover:text-adna-green flex flex-col justify-center items-center"
+      >
+        <span v-html="category.icon"></span>
+
+        <span>{{ category.name }}</span>
+      </router-link>
+    </nav>
+  </div>
 </template>

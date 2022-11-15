@@ -3,8 +3,8 @@ import Navbar from "./Navbar.vue";
 </script>
 
 <template>
-  <header>
-    <div class="md:px-16 px-4 py-6 flex justify-between items-center border-b">
+  <header class="bg-white">
+    <div class="md:px-16 px-4 py-6 flex justify-between items-center">
       <div>
         <router-link
           :to="{ name: 'home' }"
@@ -19,12 +19,12 @@ import Navbar from "./Navbar.vue";
         <a href="#">Annonce</a>
       </div>
       <div>
-        <button
-          type="button"
+        <router-link
+          :to="{ name: 'register' }"
           class="bg-adna-green text-white md:text-[16px] text-xs py-2 px-3 rounded-lg"
         >
           Rejoindre l'annuaire
-        </button>
+        </router-link>
       </div>
     </div>
     <Navbar />

@@ -9,14 +9,14 @@ import { ArrowRightIcon, ChevronDownIcon } from "@heroicons/vue/24/outline";
       class="bg-white shadow z-10 flex items-center p-2 sm:px-0 px-3 md:w-[800px] w-full h-16 rounded-full"
     >
       <div
-        class="lg:w-[250px] w-1/3 h-full py-1 sm:px-2 px-1 rounded-l-full border-r"
+        class="lg:w-[250px] w-1/3 h-full sm:pr-2 sm:pl-3.5 px-1 rounded-l-full border-r"
       >
         <h6 class="text-xs">Activité</h6>
         <input
           type="text"
           name=""
           placeholder="Hôtels, Restaurants..."
-          class="border-none focus:border-none focus:outline-none w-full text-xs lg:text-sm focus:ring-0 text-gray-500"
+          class="border-none focus:border-none focus:outline-none w-full bg-transparent text-xs lg:text-sm focus:ring-0 text-gray-500"
           id=""
         />
       </div>
@@ -37,7 +37,7 @@ import { ArrowRightIcon, ChevronDownIcon } from "@heroicons/vue/24/outline";
         <input
           type="text"
           name=""
-          class="border-none focus:border-none focus:outline-none w-full text-xs lg:text-sm focus:ring-0 text-gray-500"
+          class="border-none focus:border-none focus:outline-none bg-transparent w-full text-xs lg:text-sm focus:ring-0 text-gray-500"
           placeholder="Douala Bonamoussadi"
           id=""
         />

@@ -9,7 +9,7 @@ import SearchSection from "../SearchSection.vue";
     class="h-[500px] bg-cover flex flex-col justify-center items-center space-y-6"
     :style="{ 'background-image': `url(${bgImage})` }"
   >
-    <div class="text-center text-white">
+    <div class="text-center text-white px-2">
       <h1 class="text-3xl font-medium mb-3">Adna Annuaire</h1>
       <p class="text-2xl">
         Retrouvez plus de 15,000 entreprises Africaines de facon organisée

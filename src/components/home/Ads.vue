@@ -3,6 +3,8 @@ import Ads1 from "../Ads.vue";
 import binocularsImage from "@/assets/images/binoculars.png";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
+import { Autoplay } from "swiper";
+const modules = [Autoplay];
 </script>
 
 <template>
@@ -10,6 +12,10 @@ import "swiper/css";
     <h1 class="lg:text-4xl text-2xl font-bold text-adna-green">Adna Annonce</h1>
 
     <swiper
+      :autoplay="{
+        delay: 2500,
+        disableOnInteraction: false,
+      }"
       :slidesPerView="4"
       :spaceBetween="5"
       :breakpoints="{
@@ -26,6 +32,7 @@ import "swiper/css";
           spaceBetween: 20,
         },
       }"
+      :modules="modules"
       class="lg:px-12 my-4"
     >
       <swiper-slide><Ads1 /></swiper-slide>

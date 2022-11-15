@@ -3,7 +3,7 @@ import overboardImage from "@/assets/images/overboard.png";
 </script>
 
 <template>
-  <div class="h-72 w-72 bg-white rounded-lg overflow-hidden">
+  <div class="!h-72 w-72 bg-white rounded-lg overflow-hidden">
     <img :src="overboardImage" class="object-cover h-36 w-full" alt="" />
     <div class="px-2 py-3">
       <h1 class="font-medium text-lg leading-6 mb-2">

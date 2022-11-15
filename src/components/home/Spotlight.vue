@@ -4,6 +4,8 @@ import bowlingImage from "@/assets/images/bowling.png";
 import syringueImage from "@/assets/images/syringue.png";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
+import { Autoplay } from "swiper";
+const modules = [Autoplay];
 </script>
 <template>
   <section
@@ -13,6 +15,10 @@ import "swiper/css";
       Découvrez le meilleurs de vos activités
     </h1>
     <swiper
+      :autoplay="{
+        delay: 2500,
+        disableOnInteraction: false,
+      }"
       :slidesPerView="3"
       :spaceBetween="5"
       :breakpoints="{
@@ -30,6 +36,7 @@ import "swiper/css";
         },
       }"
       class="mt-10"
+      :modules="modules"
     >
       <swiper-slide
         class="bg-gray-100 !h-60 w-64 rounded-lg p-3 relative overflow-hidden"

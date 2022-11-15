@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         lexend: "Lexend",
+        sans: ['"Lexend"'],
       },
       colors: {
         "adna-green": "#16A085",
@@ -15,5 +16,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
