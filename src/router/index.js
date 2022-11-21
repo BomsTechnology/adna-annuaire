@@ -55,8 +55,9 @@ const routes = [
     },
   },
   {
-    path: "/company",
+    path: "/company/:slug",
     name: "company",
+    props: true,
     components: {
       default: () => import("@/views/front/Company.vue"),
       header: Header,

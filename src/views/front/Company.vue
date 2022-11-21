@@ -1,3 +1,4 @@
+import { onMounted } from 'vue';
 <script setup>
 import {
   PhotoIcon,
@@ -8,18 +9,39 @@ import {
   GlobeAltIcon,
   ArrowTopRightOnSquareIcon,
   QuestionMarkCircleIcon,
+  BuildingOffice2Icon,
   ClockIcon,
   MegaphoneIcon,
   DocumentTextIcon,
 } from "@heroicons/vue/24/solid";
+import { onMounted } from "vue";
+import useCompany from "@/composables/useCompany";
+const { company, loading, errors, getCompany } = useCompany();
+const props = defineProps({
+  slug: {
+    required: true,
+    type: String,
+  },
+});
+
+onMounted(async function () {
+  await getCompany(props.slug);
+});
 </script>
 <template>
   <section class="relative">
     <div class="h-52 bg-gray-50 w-full"></div>
     <div
-      class="h-52 w-52 rounded-full border -mt-28 bg-white lg:mx-10 mx-auto flex justify-center items-center"
+      class="h-52 w-52 rounded-full border -mt-28 bg-white overflow-hidden lg:mx-10 mx-auto flex justify-center items-center"
     >
-      <PhotoIcon class="w-32 h-32 text-gray-100" />
+      <PhotoIcon class="w-32 h-32 text-gray-300 animate-pulse" v-if="loading" />
+      <img
+        v-else-if="company.image"
+        :src="company.image"
+        class="w-full h-full object-cover"
+        alt=""
+      />
+      <BuildingOffice2Icon class="w-32 h-32 text-gray-300" v-else />
     </div>
     <div
       class="lg:mx-14 flex flex-col lg:justify-start justify-center lg:items-start items-center py-10"

@@ -6,6 +6,7 @@ import { MapPinIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/vue/24/solid";
 <template>
   <div class="animate-pulse">
     <div
+      v-for="i in 4"
       class="shadow-lg lg:w-[600px] w-full lg:h-40 rounded-lg flex lg:items-center items-start lg:flex-row flex-col space-x-4 bg-gray-100 border p-3"
     >
       <div

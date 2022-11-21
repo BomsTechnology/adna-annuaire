@@ -19,12 +19,12 @@ import { GlobeAltIcon } from "@heroicons/vue/24/outline";
         Enregistrez votre entreprise des maintenant sur ADNA annuaire et
         beneficiez d’une meilleures visibilité en ligne.
       </p>
-      <button
-        type="button"
+      <router-link
+        :to="{ name: 'register' }"
         class="mt-6 bg-adna-yellow text-adna-brown py-3 px-8 rounded-lg lg:text-xl font-semibold"
       >
         Commencer
-      </button>
+      </router-link>
     </div>
     <div class="lg:w-1/2 hidden lg:flex justify-end items-center relative">
       <img :src="restaurantImage" class="h-80 object-cover z-10" alt="" />
