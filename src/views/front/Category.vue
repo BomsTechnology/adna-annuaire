@@ -20,7 +20,7 @@ const props = defineProps({
     type: String,
   },
 });
-
+const showAll = ref(false);
 onMounted(async function () {
   if(props.subCategory){
     await getCategory(props.subCategory);
@@ -93,6 +93,7 @@ watch(props, async function (newProps, oldProps) {
       class="lg:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-6 py-4"
     >
       <router-link
+      v-if="showAll"
         :to="{
           name: 'category',hash: '#view',
           params: {
@@ -104,6 +105,24 @@ watch(props, async function (newProps, oldProps) {
         class="text-sm lg:text-lg bg-gray-100 px-4 py-2 rounded-xl"
         >{{ subCategory.name }}</router-link
       >
+      <router-link
+      v-else
+        :to="{
+          name: 'category',hash: '#view',
+          params: {
+            slug: category.slug,
+            subCategory: subCategory.slug,
+          },
+        }"
+        v-for="subCategory in category.children.slice(0, 9)"
+        class="text-sm lg:text-lg bg-gray-100 px-4 py-2 rounded-xl"
+        >{{ subCategory.name }}</router-link
+      >
+    </div>
+    <div v-if="category.children.length > 9" class="lg:w-2/3 flex justify-center text-sm mt-2" >
+      <button type="button" @click="showAll = !showAll"><span v-if="showAll">Masquer</span>
+      <span v-else>Tout afficher</span></button>
+      
     </div>
     <div class="mt-4 flex items-center space-x-2">
       <button

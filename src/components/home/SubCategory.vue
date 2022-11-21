@@ -47,7 +47,7 @@ const props = defineProps({
               subCategory: subCategory.slug,
             },
           }"
-          v-for="(subCategory, index) in data.children.slice(1, 7)"
+          v-for="(subCategory, index) in data.children.slice(0, 8)"
           :key="index"
           class="lg:text-xl text-sm bg-gray-100 px-4 py-2 rounded-xl"
           >{{ subCategory.name }}</router-link

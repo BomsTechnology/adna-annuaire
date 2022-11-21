@@ -26,6 +26,7 @@ const props = defineProps({
 
 onMounted(async function () {
   await getCompany(props.slug);
+  console.log(company.value);
 });
 </script>
 <template>
@@ -36,8 +37,8 @@ onMounted(async function () {
     >
       <PhotoIcon class="w-32 h-32 text-gray-300 animate-pulse" v-if="loading" />
       <img
-        v-else-if="company.image"
-        :src="company.image"
+        v-else-if="company.avatar"
+        :src="company.avatar"
         class="w-full h-full object-cover"
         alt=""
       />
@@ -46,9 +47,12 @@ onMounted(async function () {
     <div
       class="lg:mx-14 flex flex-col lg:justify-start justify-center lg:items-start items-center py-10"
     >
-      <h1 class="lg:text-3xl font-bold text-xl">Gno Solutions</h1>
-      <h3 class="text-gray-500 mt-1 text-xs lg:text-lg">
-        Formations professionnelles
+      <h1 class="lg:text-3xl font-bold text-xl">{{ company.name }}</h1>
+      <h3
+        v-if="company.category_company"
+        class="text-gray-500 mt-1 text-xs lg:text-lg"
+      >
+        {{ company.category_company.name }}
       </h3>
       <div class="space-y-2 mt-2">
         <div
@@ -59,7 +63,7 @@ onMounted(async function () {
           </h4>
           <h4 class="flex space-x-2 items-center">
             <PhoneIcon class="h-5 w-5 text-adna-brown" />
-            <span>237 6 99 99 99 99</span>
+            <span>{{ company.phone }}</span>
           </h4>
         </div>
 
@@ -71,21 +75,22 @@ onMounted(async function () {
             <span>40 avis</span>
           </h4>
           <a
-            href="https://gno-business.com"
+            v-if="company.website"
+            :href="company.website"
             target="_blank"
             class="flex space-x-2 items-center"
           >
             <GlobeAltIcon class="h-6 w-6 text-blue-500" />
-            <span>https://gno-business.com</span>
+            <span>{{ company.website }}</span>
             <ArrowTopRightOnSquareIcon class="h-5 w-5 text-blue-100" />
           </a>
         </div>
         <div
           class="flex items-center lg:justify-start justify-center space-x-3"
         >
-          <h4 class="flex space-x-2 items-center">
+          <h4 class="flex space-x-2 items-center" v-if="company.location">
             <MapPinIcon class="h-6 w-6 text-adna-green" />
-            <span>Douala, Bonamoussadi</span>
+            <span>{{ company.location }}</span>
           </h4>
           <a href="#"
             ><svg
@@ -197,17 +202,7 @@ onMounted(async function () {
           <p
             class="mt-4 whitespace-pre-line text-justify text-sm leading-6 lg:mx-8"
           >
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus
-            adipisci accusantium, illo qui est voluptates esse praesentium,
-            explicabo facere repudiandae aliquid laborum et magnam harum
-            necessitatibus veritatis animi repellat cum? Lorem ipsum dolor sit,
-            amet consectetur adipisicing elit. Temporibus adipisci accusantium,
-            illo qui est voluptates esse praesentium, explicabo facere
-            repudiandae aliquid laborum et magnam harum necessitatibus veritatis
-            animi repellat cum?
-            <span></span>
-            -Lorem ipsum dolor sit, amet consectetur adipisicing -Lorem ipsum
-            dolor sit, amet consectetur adipisicing
+            {{ company.description }}
           </p>
         </div>
         <div
