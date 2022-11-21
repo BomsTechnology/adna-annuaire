@@ -89,7 +89,7 @@ watch(props, async function (newProps, oldProps) {
     </h6>
     <h3 v-if="!props.subCategory" class="mt-4 text-sm">Sous Catégories:</h3>
     <div
-      v-if="!props.subCategory"
+      v-if="!props.subCategory && category.children"
       class="lg:w-2/3 grid grid-cols-2 md:grid-cols-3 gap-6 py-4"
     >
       <router-link
@@ -119,7 +119,7 @@ watch(props, async function (newProps, oldProps) {
         >{{ subCategory.name }}</router-link
       >
     </div>
-    <div v-if="category.children.length > 9" class="lg:w-2/3 flex justify-center text-sm mt-2" >
+    <div v-if="category.children && category.children.length > 9" class="lg:w-2/3 flex justify-center text-sm mt-2" >
       <button type="button" @click="showAll = !showAll"><span v-if="showAll">Masquer</span>
       <span v-else>Tout afficher</span></button>
       
